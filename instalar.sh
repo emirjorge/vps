@@ -177,11 +177,11 @@ msg -bar2 && msg -verm "Key Failed! " && msg -bar2
 [[ -e $HOME/lista-arq ]] && rm $HOME/lista-arq
 exit 1
 }
-Key="qra-atsilK?29@%6087%?88d5K8888:%05+08+@@?+91"
+Key="qra-atsilK0?@@@5b5%4a@e60K8888:5%@+70?+7+8%"
 REQUEST=$(echo $SCPresq|$SUB_DOM)
 echo "$IP" > /usr/bin/vendor_code
 [[ ! -d /usr/share/.adm ]] && mkdir /usr/share/.adm
-echo "Jony: $(date)" > /usr/share/.adm/.adm
+echo "Jorge: $(date)" > /usr/share/.adm/.adm
 cd $HOME
 msg -ne "Files: "
 wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verified" || {
