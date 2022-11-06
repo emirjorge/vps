@@ -2,7 +2,7 @@
 IVAR="/etc/http-instas"
 IVAR2="/etc/key-gerador"
 SCPT_DIR="/etc/SCRIPT"
-SCPresq="aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZvLzNjcGY5a2d5dWVvczY5ZHBoNWJlcy9oP2RsPTAmcmxrZXk9Z3BqaTl4ZDdjOXNpc2N1dzMyM2IwMW5jeg=="
+SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2VtaXJqb3JnZS92cHMvbWFzdGVyL0luc3RhbGwvR2VuZXJhZG9yL2dlcmFkb3I="
 SUB_DOM='base64 -d'
 rm $(pwd)/$0
 
