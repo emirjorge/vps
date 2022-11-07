@@ -49,7 +49,7 @@ msg -bar
     while true; do
     read -p " Listen-SSL: " SSLPORT
     [[ $(mportas|grep -w "$SSLPORT") ]] || break
-    echo -e "\033[1;33m $(fun_trans "esta Porta Ja esta em Uso")\033[0m"
+    echo -e "\033[1;33m $(fun_trans "Este puerto está en uso")\033[0m"
     unset SSLPORT
     done
 msg -bar
@@ -64,7 +64,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart > /dev/null 2>&1
 /etc/init.d/stunnel4 restart > /dev/null 2>&1
 msg -bar
-msg -ama " $(fun_trans "INSTALADO COM SUCESSO")"
+msg -ama " $(fun_trans "INSTALADO CON ÉXITO")"
 msg -bar
 return 0
 }
@@ -77,8 +77,8 @@ exit 1
 fi
 msg -azu " $(fun_trans "SSL Stunnel")"
 msg -bar
-msg -ama " $(fun_trans "Selecione Uma Porta De Redirecionamento Interna")"
-msg -ama " $(fun_trans "Ou seja, uma Porta no Seu Servidor Para o SSL")"
+msg -ama " $(fun_trans "Selecione un puerto de redireccionamiento interno")"
+msg -ama " $(fun_trans "Es decir, un puerto en su servidor para SSL")"
 msg -bar
          while true; do
          read -p " Local-Port: " portx
@@ -107,14 +107,14 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart > /dev/null 2>&1
 /etc/init.d/stunnel4 restart > /dev/null 2>&1
 msg -bar
-msg -ama " $(fun_trans "PORTA AGREGADA COM SUCESSO")"
+msg -ama " $(fun_trans "PUERTO AGREGADO CON ÉXITO")"
 msg -bar
 }
 
 fun_ssl () {
 msg -ama " $(fun_trans "CONFIGURACAO DE SSL STUNNEL*")"
 msg -bar
-echo -ne "\033[1;32m [0] > " && msg -bra "$(fun_trans "Voltar")"
+echo -ne "\033[1;32m [0] > " && msg -bra "$(fun_trans "Regresar")"
 echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "Adicionar uma porta ")"
 echo -ne "\033[1;32m [2] > " && msg -azu "$(fun_trans "Editar Cliente SSL Stunnel") \033[1;31m(comand nano)"
 echo -ne "\033[1;32m [3] > " && msg -azu "$(fun_trans "Desinstalar SSL Stunnel ")"
