@@ -43,11 +43,11 @@ sleep 1s
 
 ssl_stunel () {
 [[ $(mportas|grep stunnel4|head -1) ]] && {
-msg -ama " $(fun_trans "Parando Stunnel")"
+msg -ama " $(fun_trans "Deteniendo Stunnel")"
 msg -bar
 fun_bar "apt-get purge stunnel4 -y"
 msg -bar
-msg -ama " $(fun_trans "Parado Com Sucesso!")"
+msg -ama " $(fun_trans "Detenido con éxito")"
 rm -rf /etc/stunnel/stunnel.conf > /dev/null 2>&1
 rm -rf /etc/stunnel > /dev/null 2>&1
 msg -bar
@@ -55,8 +55,8 @@ return 0
 }
 msg -azu " $(fun_trans "SSL Stunnel")"
 msg -bar
-msg -ama " $(fun_trans "Selecione Uma Porta De Redirecionamento Interna")"
-msg -ama " $(fun_trans "Ou seja, uma Porta no Seu Servidor Para o SSL")"
+msg -ama " $(fun_trans "Selecione un puerto de redirecionamento interno")"
+msg -ama " $(fun_trans "Es decir, un puerto local para su servidor SSL")"
 msg -bar
          while true; do
          read -p " Local-Port: " portx
@@ -66,7 +66,7 @@ msg -bar
          done
 msg -bar
 DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
-msg -ama " $(fun_trans "Agora Presizamos Saber Qual Porta o SSL, Vai Escutar")"
+msg -ama " $(fun_trans "Ahora especificar por cual puerto va a escuchar")"
 msg -bar
     while true; do
     read -p " Listen-SSL: " SSLPORT
@@ -93,7 +93,7 @@ return 0
 
 ssl_greport () {
 if [[ ! -e /etc/stunnel/stunnel.conf ]]; then
-msg -ama " $(fun_trans "SSL Stunnel Nao Encontrado")"
+msg -ama " $(fun_trans "SSL Stunnel no encontrado")"
 msg -bar
 exit 1
 fi
@@ -105,17 +105,17 @@ msg -bar
          while true; do
          read -p " Local-Port: " portx
          if [[ ! -z $portx ]]; then
-            [[ $(mportas|grep -w "$portx") ]] && break || echo -e "\033[1;31m $(fun_trans "Porta Invalida")\033[0m"
+            [[ $(mportas|grep -w "$portx") ]] && break || echo -e "\033[1;31m $(fun_trans "Puerto Inválido")\033[0m"
          fi
          done
 msg -bar
-msg -ama " $(fun_trans "Agora Presizamos Saber Qual Porta o SSL, Vai Escutar")"
+msg -ama " $(fun_trans "Ahora especifica por cuál puerto SSL se va a escuchar")"
 msg -bar
     while true; do
     read -p " Puerto SSL: " SSLPORTr
     [[ $(mportas|grep -w "$SSLPORTr") ]] || break
     msg -bar
-    echo -e "$(fun_trans "esta Porta Ja esta em Uso")"
+    echo -e "$(fun_trans "Este puerto ya está en uso")"
     msg -bar
     unset SSLPORT1
     done
@@ -134,10 +134,10 @@ msg -bar
 }
 
 fun_ssl () {
-msg -ama " $(fun_trans "CONFIGURACAO DE SSL STUNNEL*")"
+msg -ama " $(fun_trans "CONFIGURACIÓN DE SSL STUNNEL*")"
 msg -bar
 echo -ne "\033[1;32m [0] > " && msg -bra "$(fun_trans "Regresar")"
-echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "Adicionar uma porta ")"
+echo -ne "\033[1;32m [1] > " && msg -azu "$(fun_trans "Agregar un puerto ")"
 echo -ne "\033[1;32m [2] > " && msg -azu "$(fun_trans "Editar Cliente SSL Stunnel") \033[1;31m(comand nano)"
 echo -ne "\033[1;32m [3] > " && msg -azu "$(fun_trans "Desinstalar SSL Stunnel ")"
 msg -bar
