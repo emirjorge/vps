@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
+declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" [5]="\e[1;36m" )
 SCPdir="/etc/newadm" && [[ ! -d ${SCPdir} ]] && exit 1
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
 SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
@@ -17,6 +17,28 @@ var1=$(echo $port | awk '{print $1}') && var2=$(echo $port | awk '{print $9}' | 
 done <<< "$portas_var"
 i=1
 echo -e "$portas"
+}
+
+fun_bar () {
+comando="$1"
+ _=$(
+$comando > /dev/null 2>&1
+) & > /dev/null
+pid=$!
+while [[ -d /proc/$pid ]]; do
+echo -ne " \033[1;33m["
+   for((i=0; i<20; i++)); do
+   echo -ne "\033[1;31m##"
+   sleep 0.5
+   done
+echo -ne "\033[1;33m]"
+sleep 1s
+echo
+tput cuu1
+tput dl1
+done
+echo -e " \033[1;33m[\033[1;31m########################################\033[1;33m] - \033[1;32m100%\033[0m"
+sleep 1s
 }
 
 ssl_stunel () {
